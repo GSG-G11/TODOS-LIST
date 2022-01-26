@@ -8,5 +8,39 @@
     <script src="js/main.js" defer></script>
     <title>TODOS LIST</title>
   </head>
-  <body></body>
+  <body>
+    <!-- START HEADER -->
+    <header>
+      <h1>TODOS LIST</h1>
+    </header>
+    <!-- END HEADER -->
+
+    <!--START THE ADD BOX -->
+    <section class="add-box">
+      <input type="text" id="todo-input" placeholder="write your todos" />
+      <input type="button" value="Add" id="add-todo-btn" />
+      <input type="button" value="Edit" id="edit-todo-btn" />
+      <input type="hidden" name="index" id="saved-index-number" />
+    </section>
+    <!--END THE ADD BOX -->
+
+    <!-- START TODOS LIST BOX -->
+    <main id="todos-box">
+      <p>To-do: Todos</p>
+      <p>Date: new Date</p>
+      <div class="icons">
+        <i class="fas fa-trash-alt" id="del-icon"></i>
+        <i class="far fa-edit" id="edit-icon"></i>
+      </div>
+    </main>
+    <!-- END TODOS LIST BOX -->
+
+    <!-- START  FOOOTER -->
+    <footer>
+      <div id="tasks-count">Tasks <span>0</span></div>
+      <input type="button" value="Clear" id="clear-all" />
+      <div id="completed-count">completed<span>0</span></div>
+    </footer>
+    <!-- END  FOOOTER -->
+  </body>
 </html>
