@@ -4,9 +4,56 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles/style.css" />
     <script src="js/main.js" defer></script>
+    <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
     <title>TODOS LIST</title>
   </head>
-  <body></body>
+  <body>
+    <!-- START HEADER -->
+    <header>
+      <h1>TODOS LIST</h1>
+    </header>
+    <!-- END HEADER -->
+
+    <!--START THE ADD BOX -->
+    <section class="add-box">
+      <input type="text" id="todo-input" placeholder="write your todos" />
+      <input type="button" value="+" id="add-todo-btn" />
+
+       <span class="iconify-inline" data-icon="ic:twotone-done" id="edit-todo-btn"></span>
+      <input type="hidden" name="index" id="saved-index-number" /> 
+    </section>
+    <!--END THE ADD BOX -->
+
+    <!-- START TODOS LIST BOX -->
+    <main id="todos-container">
+    
+    
+      <div>
+              <p>To-do: Todos</p>
+      <div class="icons">
+        <span class="iconify-inline" data-icon="ic:twotone-done" id="done-icon"></span>
+        <span class="iconify-inline" data-icon="ci:edit" id="edit-icon"></span>
+        <span class="iconify-inline" data-icon="ic:round-delete-outline" id="del-icon"></span>
+      </div>
+      </div>
+         
+     
+    </main>
+    <!-- END TODOS LIST BOX -->
+
+    <!-- START  FOOOTER -->
+    <footer>
+      <div id="tasks-count">Tasks <span>0</span></div>
+      <div id="completed-count">completed<span>0</span></div>
+    </footer>
+    <!-- END  FOOOTER -->
+  </body>
 </html>
