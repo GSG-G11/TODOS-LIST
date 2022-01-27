@@ -4,32 +4,9 @@ const addTodoBtn = document.getElementById("add-todo-btn");
 const todosContainer = document.getElementById("todos-container");
 const editTodoBtn = document.getElementById("edit-todo-btn");
 let savedIndexNumber = document.getElementById("saved-index-number");
-let finshedTaskScore = 0;
-let taskScore = 0;
-let finshedTaskScoreSpan = document.getElementById("finshed-task-score");
-let taskScoreSpan = document.getElementById("task-score");
+const clearAllBtn = document.getElementById("clear-all");
 
-function updateScore() {
-  // save the scores to localstorage
-  localStorage.setItem("taskScore", JSON.stringify(taskScore));
-  localStorage.setItem("finishedTaskScore", JSON.stringify(finshedTaskScore));
-  const finalTaskScore = JSON.parse(localStorage.getItem("taskScore"));
 
-  const finalFinishedTaskScore = JSON.parse(
-    localStorage.getItem("finishedTaskScore")
-  );
-
-  finshedTaskScoreSpan.textContent = finalFinishedTaskScore || 0;
-
-  taskScoreSpan.textContent = finalTaskScore || 0;
-
-  if (finshedTaskScore < 0) {
-    finshedTaskScoreSpan.textContent = 0;
-  }
-  if (taskScore < 0) {
-    taskScoreSpan.textContent = 0;
-  }
-}
 // add event lisener to the (add) button
 addTodoBtn.addEventListener("click", addTodo);
 
@@ -46,9 +23,7 @@ function addTodo() {
     todoArray.unshift(inputValue);
     localStorage.setItem("todos", JSON.stringify(todoArray));
   }
-  taskScore++;
   showTodos();
-  updateScore();
 
   todoInput.value = "";
 }
@@ -98,7 +73,6 @@ function saveChanges() {
   todoArray[savedIndex] = todoInput.value;
   localStorage.setItem("todos", JSON.stringify(todoArray));
   showTodos();
-
   editTodoBtn.style.display = "none";
   location.reload();
 }
@@ -112,10 +86,6 @@ function deleteTodo(i) {
   let todoArray = JSON.parse(todoTask);
   todoArray.splice(i, 1);
   localStorage.setItem("todos", JSON.stringify(todoArray));
-  taskScore--;
-  finshedTaskScore++;
-  updateScore();
-
   showTodos();
 }
 
@@ -129,7 +99,14 @@ function finsishTodo(i) {
   taskPlace.style.color = "red";
   setTimeout(() => {
     deleteTodo();
-    taskScore--;
-    updateScore();
   }, 3000);
 }
+
+//function for delete All DO-TOs:How the delete all button works:
+//  when a user clicks on the delete all button, it deletes all the 'To-dos' he created.
+
+clearAllBtn.addEventListener("click", () => {
+  localStorage.clear();
+  showTodos();
+  editTodoBtn.style.display = "none";
+});
