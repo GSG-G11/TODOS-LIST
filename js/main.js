@@ -36,18 +36,22 @@ function showTodos() {
 
   todoArray.forEach((task, index) => {
     finalTodo += `
+      <div>
               <p>${task}</p>
       <div class="icons">
-        <span class="iconify-inline" data-icon="ic:twotone-done" id="done-icon"></span>
+        <span class="iconify-inline" data-icon="ic:twotone-done" id="done-icon" onclick=' finsishTodo(${index})'></span>
         <span class="iconify-inline" data-icon="ci:edit" id="edit-icon" onclick='editTodo(${index})'></span>
         <span class="iconify-inline" data-icon="ic:round-delete-outline" id="del-icon"  onclick="deleteTodo(${index})"></span>
       </div>
+      </div>
+
       `;
   });
   todosContainer.innerHTML = finalTodo;
 }
 
 // How the edit button works: when a user clicks on the edit button, the value and show on the input felid and then the save button will show next to the add button and the add button will get disabled
+
 function editTodo(i) {
   let todoTask = localStorage.getItem("todos");
   savedIndexNumber.value = i;
@@ -71,14 +75,27 @@ function saveChanges() {
   location.reload();
 }
 
-// function for delete:
 // How the delete button works: when a user clicks on the delete button,
-//  it deletes the todo  task related to it from the local storage and the result container
+// the delete button will delete the todo from the localstorage and the showTodos function will show the todos again
+//  And delete the todo task from the result container
 
 function deleteTodo(i) {
   let todoTask = localStorage.getItem("todos");
   let todoArray = JSON.parse(todoTask);
   todoArray.splice(i, 1);
   localStorage.setItem("todos", JSON.stringify(todoArray));
-  showTodos()
+  showTodos();
+}
+
+// How the finish button works: when a user clicks on the finish button,
+// the text will change to strikethrough and the text color will change to red
+// and the todo will be deleted after 3 seconds
+
+function finsishTodo(i) {
+  let taskPlace = todosContainer.children[i].children[0];
+  taskPlace.style.textDecoration = "line-through";
+  taskPlace.style.color = "red";
+  setTimeout(() => {
+    deleteTodo();
+  }, 3000);
 }
