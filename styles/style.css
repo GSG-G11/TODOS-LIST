@@ -138,37 +138,3 @@ footer {
   text-align: center;
   border-radius: 50%;
 }
-@media (min-width: 992px) {
-  main #todos-container div {
-    width: 75%;
-  }
-  .add-box #todo-input {
-    font-size: 0.6rem;
-  }
-
-  .add-box #add-todo-btn {
-    font-size: 1.5rem;
-  }
-
-  .add-box #edit-todo-btn {
-    font-size: 1.5rem;
-  }
-
-  p {
-    text-align: start;
-    margin: 20px;
-    font-size: 1.5rem;
-  }
-
-  #done-icon {
-    font-size: 1.5rem;
-  }
-
-  #del-icon {
-    font-size: 1.5rem;
-  }
-
-  #edit-icon {
-    font-size: 1.5rem;
-  }
-}
