@@ -18,7 +18,7 @@ function addTodo() {
     } else {
       todoArray = JSON.parse(todoTask);
     }
-    todoArray.push(inputValue);
+    todoArray.unshift(inputValue);
     localStorage.setItem("todos", JSON.stringify(todoArray));
   }
   showTodos();
@@ -28,7 +28,7 @@ function addTodo() {
 showTodos();
 
 // show todos function
-// it's bring the todos form the localstoragae and reveres the array to show the recent added todos to the top and foreach item it create a div contains the todo and it's btns
+// it's bring the todos form the localstoragae and foreach item it create a div contains the todo and it's btns
 function showTodos() {
   let todoTask = localStorage.getItem("todos");
   todoTask == null ? (todoArray = []) : (todoArray = JSON.parse(todoTask));
@@ -40,7 +40,7 @@ function showTodos() {
       <div class="icons">
         <span class="iconify-inline" data-icon="ic:twotone-done" id="done-icon"></span>
         <span class="iconify-inline" data-icon="ci:edit" id="edit-icon" onclick='editTodo(${index})'></span>
-        <span class="iconify-inline" data-icon="ic:round-delete-outline" id="del-icon"></span>
+        <span class="iconify-inline" data-icon="ic:round-delete-outline" id="del-icon"  onclick="deleteTodo(${index})"></span>
       </div>
       `;
   });
@@ -69,4 +69,16 @@ function saveChanges() {
 
   editTodoBtn.style.display = "none";
   location.reload();
+}
+
+// function for delete:
+// How the delete button works: when a user clicks on the delete button,
+//  it deletes the todo  task related to it from the local storage and the result container
+
+function deleteTodo(i) {
+  let todoTask = localStorage.getItem("todos");
+  let todoArray = JSON.parse(todoTask);
+  todoArray.splice(i, 1);
+  localStorage.setItem("todos", JSON.stringify(todoArray));
+  showTodos()
 }
