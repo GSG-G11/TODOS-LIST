@@ -112,32 +112,32 @@ p {
   font-size: 20px;
 }
 
-footer {
-  display: flex;
-  justify-content: space-evenly;
-  position: relative;
-}
-#tasks-count span {
-  background-color: var(--main-color);
-  color: var(--sec-color);
-  width: 24px;
-  height: 24px;
-  position: absolute;
-  bottom: 10px;
-  text-align: center;
-  border-radius: 50%;
-}
+footer{
+      background-color: white;
+      margin-left: 5%;
+      height: 10vh;
+      width: 90%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+      border: none;
+      border-radius: 5px;
+ }
+ 
+ #clear-all{
+     border: none;
+     color: white;
+     font-size: 15px;
+     padding: 10px;
+     font-weight: bold;
+     background-color:crimson;
+     border-radius: 5px;
+     width: auto;
+     height: 5vh;
+     margin: 5px;
+ }
 
-#completed-count span {
-  background-color: var(--third-color);
-  color: var(--sec-color);
-  width: 24px;
-  height: 24px;
-  position: absolute;
-  bottom: 10px;
-  text-align: center;
-  border-radius: 50%;
-}
 @media (min-width: 992px) {
   main #todos-container div {
     width: 75%;
